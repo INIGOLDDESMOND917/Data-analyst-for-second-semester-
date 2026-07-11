@@ -1,20 +1,20 @@
+name,department,level,course,score
+John,Chemical Science,100,CSC101,85
+Mary,Computer Science,100,MTH101,78
+James,Cyber Security,200,CSC201,91
+Grace,Computer Science,200,MTH201,18
+David,Computer Science,300,CSC301,75
+Sarah,Data Science,300,CSC302,88
+Daniel,Agricultural Science,400,CSC401,95
+Joy,Computer Science,400,CSC402,45
+Peter,Data Science,500,CSC501,82
+Esther,Computer Science,500,CSC502,12
+Inioluwa,Cyber Security,500,CSC503,100
+
+
+
 import pandas as pd
 df = pd.read_csv("exam.csv")
-df.columns = df.columns.str.strip()
-for department in df["department"].unique():
-    dept = df[df["department"] == department]
-    highest = dept.loc[dept["score"].idxmax()]
-    lowest = dept.loc[dept["score"].idxmin()]
-    print("Department:", department)
-    print("\nHighest Score")
-    print("Name:", highest["name"])
-    print("Course:", highest["course"])
-    print("Score:", highest["score"])
-    print("\nLowest Score")
-    print("Name:", lowest["name"])
-    print("Course:", lowest["course"])
-    print("Score:", lowest["score"])
-    print("\nStudents with at least 20%")
-    print(dept[dept["score"] >= 20][["name", "course", "score"]])
-    print("\fStudents with at least 80%")
-    print(dept[dept["score"] >= 80][["name", "course", "score"]])
+maxdept = df[df["department"] == "Data Science"]
+highmax = maxdept[maxdept["score"] == 88]
+print(highmax[["name", "score","level"]])
